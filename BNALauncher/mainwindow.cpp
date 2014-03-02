@@ -106,3 +106,57 @@ void MainWindow::on_pushButtonCreate_clicked()
         os.close();
     }
 }
+
+void MainWindow::on_toolButtonCUCorMat_input_dir_clicked()
+{
+    ui->lineEditCUCorMat_input_dir->setText(QFileDialog::getExistingDirectory(this, "Directory"));
+}
+
+void MainWindow::on_toolButtonCUBFW_Lp_input_dir_clicked()
+{
+    ui->lineEditCUBFW_Lp_input_dir->setText(QFileDialog::getExistingDirectory(this, "Directory"));
+}
+
+void MainWindow::on_toolButtonCUBFS_Lp_input_dir_clicked()
+{
+    ui->lineEditCUBFS_Lp_input_dir->setText(QFileDialog::getExistingDirectory(this, "Directory"));
+}
+
+void MainWindow::on_toolButtonCp_input_dir_clicked()
+{
+    ui->lineEditCp_input_dir->setText(QFileDialog::getExistingDirectory(this, "Directory"));
+}
+
+void MainWindow::on_toolButtonDegree_input_dir_clicked()
+{
+    ui->lineEditDegree_input_dir->setText(QFileDialog::getExistingDirectory(this, "Directory"));
+}
+
+void MainWindow::on_toolButtonCUBC_input_dir_clicked()
+{
+    ui->lineEditCUBC_input_dir->setText(QFileDialog::getExistingDirectory(this, "Directory"));
+}
+
+void MainWindow::on_toolButtonMaslov_input_csr_file_clicked()
+{
+    ui->lineEditMaslov_input_csr_file->setText(QFileDialog::getOpenFileName(this,
+                                                                            "CSR File",
+                                                                            "",
+                                                                            "CSR (*.csr)"));
+}
+
+void MainWindow::on_toolButtonConvertNII_input_file_clicked()
+{
+    ui->lineEditConvertNII_input_file->setText(QFileDialog::getOpenFileName(this,
+                                                                            "CP File",
+                                                                            "",
+                                                                            "CP (*.cp)"));
+}
+
+void MainWindow::on_toolButtonConvertNII_mask_nii_clicked()
+{
+    ui->lineEditConvertNII_mask_nii->setText(QFileDialog::getOpenFileName(this,
+                                                                          "NII File",
+                                                                          "",
+                                                                          "NII (*.nii)"));
+}
