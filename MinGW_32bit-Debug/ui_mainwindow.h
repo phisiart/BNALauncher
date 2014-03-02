@@ -79,7 +79,16 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(417, 655);
+        MainWindow->setWindowModality(Qt::NonModal);
+        MainWindow->setEnabled(true);
+        MainWindow->resize(414, 646);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
+        MainWindow->setSizePolicy(sizePolicy);
+        MainWindow->setMinimumSize(QSize(414, 646));
+        MainWindow->setMaximumSize(QSize(414, 646));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         checkCUCorMat = new QCheckBox(centralWidget);
@@ -208,7 +217,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 417, 21));
+        menuBar->setGeometry(QRect(0, 0, 414, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -224,7 +233,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "BNA Launcher", 0));
         checkCUCorMat->setText(QApplication::translate("MainWindow", "CUCorMat", 0));
         checkCUBFW_Lp->setText(QApplication::translate("MainWindow", "CUBFW_Lp", 0));
         checkCUBFS_Lp->setText(QApplication::translate("MainWindow", "CUBFS_Lp", 0));

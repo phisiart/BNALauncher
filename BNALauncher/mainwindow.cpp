@@ -98,8 +98,11 @@ void MainWindow::on_pushButtonCreate_clicked()
                                                      "Save as..." ,
                                                      (operating_system == win32 ? "script.bat" : "script.sh"),
                                                      (operating_system == win32 ? "script (*.bat);;Any (*.*)" : "script (*.sh);Any (*.*)"));
-    std::ofstream os;
-    os.open(file_name.toStdString().c_str());
-    os << script.str();
-    os.close();
+
+    if (!file_name.isNull()) {
+        std::ofstream os;
+        os.open(file_name.toStdString().c_str());
+        os << script.str();
+        os.close();
+    }
 }
