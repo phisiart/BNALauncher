@@ -14,14 +14,12 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
 
@@ -31,67 +29,66 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
+    QWidget *layoutWidget;
+    QGridLayout *gridLayout;
     QCheckBox *checkCUCorMat;
-    QCheckBox *checkCUBFW_Lp;
-    QCheckBox *checkCUBFS_Lp;
-    QCheckBox *checkCP;
-    QCheckBox *checkDegree;
-    QCheckBox *checkCUBC;
-    QCheckBox *checkMaslov;
-    QCheckBox *checkConvertNII;
-    QLineEdit *lineEditCUCorMat_input_dir;
+    QLabel *label;
     QLabel *labelCUCorMat_input_dir;
-    QLineEdit *lineEditCUCorMat_mask_threshold;
+    QLineEdit *lineEditCUCorMat_input_dir;
+    QToolButton *toolButtonCUCorMat_input_dir;
     QLabel *labelCUCorMat_mask_threshold;
-    QLineEdit *lineEditCUCorMat_average_flag;
+    QLineEdit *lineEditCUCorMat_mask_threshold;
     QLabel *labelCUCorMat_average_flag;
-    QLineEdit *lineEditCUCorMat_binary_thresholds;
+    QLineEdit *lineEditCUCorMat_average_flag;
     QLabel *labelCUCorMat_binary_thresholds;
+    QLineEdit *lineEditCUCorMat_binary_thresholds;
+    QCheckBox *checkCUBFW_Lp;
+    QLabel *label_2;
     QLabel *labelCUBFW_Lp_input_dir;
     QLineEdit *lineEditCUBFW_Lp_input_dir;
-    QLineEdit *lineEditCUBFW_Lp_num_of_random_networks;
-    QLineEdit *lineEditCUBFS_Lp_input_dir;
+    QToolButton *toolButtonCUBFW_Lp_input_dir;
     QLabel *labelCUBFW_Lp_num_of_random_networks;
+    QLineEdit *lineEditCUBFW_Lp_num_of_random_networks;
+    QCheckBox *checkCUBFS_Lp;
+    QLabel *label_3;
+    QLabel *labelCUBFS_Lp_input_dir;
+    QLineEdit *lineEditCUBFS_Lp_input_dir;
+    QToolButton *toolButtonCUBFS_Lp_input_dir;
     QLabel *labelCUBFS_Lp_num_of_random_networks;
     QLineEdit *lineEditCUBFS_Lp_num_of_random_networks;
-    QLabel *labelCUBFS_Lp_input_dir;
+    QCheckBox *checkCP;
+    QLabel *label_4;
     QLabel *labelCp_input_dir;
     QLineEdit *lineEditCp_input_dir;
+    QToolButton *toolButtonCp_input_dir;
     QLabel *labelCp_num_of_random_networks;
     QLineEdit *lineEditCp_num_of_random_networks;
+    QCheckBox *checkDegree;
+    QLabel *label_5;
     QLabel *labelDegree_input_dir;
     QLineEdit *lineEditDegree_input_dir;
+    QToolButton *toolButtonDegree_input_dir;
+    QCheckBox *checkCUBC;
+    QLabel *label_6;
     QLabel *labelCUBC_input_dir;
     QLineEdit *lineEditCUBC_input_dir;
+    QToolButton *toolButtonCUBC_input_dir;
+    QCheckBox *checkMaslov;
+    QLabel *label_7;
     QLabel *labelMaslov_input_csr_file;
     QLineEdit *lineEditMaslov_input_csr_file;
+    QToolButton *toolButtonMaslov_input_csr_file;
+    QCheckBox *checkConvertNII;
+    QLabel *label_8;
     QLabel *labelConvertNII_input_file;
     QLineEdit *lineEditConvertNII_input_file;
-    QLineEdit *lineEditConvertNII_mask_nii;
-    QLabel *labelConvertNII_mask_nii;
-    QLineEdit *lineEditConvertNII_mask_threshold;
-    QLabel *labelConvertNII_mask_threshold;
-    QPushButton *pushButtonCreate;
-    QToolButton *toolButtonCUCorMat_input_dir;
-    QToolButton *toolButtonCUBFW_Lp_input_dir;
-    QToolButton *toolButtonCUBFS_Lp_input_dir;
-    QToolButton *toolButtonCp_input_dir;
-    QToolButton *toolButtonDegree_input_dir;
-    QToolButton *toolButtonCUBC_input_dir;
-    QToolButton *toolButtonMaslov_input_csr_file;
     QToolButton *toolButtonConvertNII_input_file;
+    QLabel *labelConvertNII_mask_nii;
+    QLineEdit *lineEditConvertNII_mask_nii;
     QToolButton *toolButtonConvertNII_mask_nii;
-    QLabel *label;
-    QLabel *label_2;
-    QLabel *label_3;
-    QLabel *label_4;
-    QLabel *label_5;
-    QLabel *label_6;
-    QLabel *label_7;
-    QLabel *label_8;
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
-    QStatusBar *statusBar;
+    QLabel *labelConvertNII_mask_threshold;
+    QLineEdit *lineEditConvertNII_mask_threshold;
+    QPushButton *pushButtonCreate;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -99,7 +96,7 @@ public:
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->setWindowModality(Qt::NonModal);
         MainWindow->setEnabled(true);
-        MainWindow->resize(713, 911);
+        MainWindow->resize(715, 703);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -109,203 +106,317 @@ public:
         MainWindow->setMaximumSize(QSize(1000, 1000));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        checkCUCorMat = new QCheckBox(centralWidget);
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 10, 691, 681));
+        gridLayout = new QGridLayout(layoutWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        checkCUCorMat = new QCheckBox(layoutWidget);
         checkCUCorMat->setObjectName(QStringLiteral("checkCUCorMat"));
-        checkCUCorMat->setGeometry(QRect(10, 10, 91, 17));
-        checkCUBFW_Lp = new QCheckBox(centralWidget);
-        checkCUBFW_Lp->setObjectName(QStringLiteral("checkCUBFW_Lp"));
-        checkCUBFW_Lp->setGeometry(QRect(10, 170, 81, 17));
-        checkCUBFS_Lp = new QCheckBox(centralWidget);
-        checkCUBFS_Lp->setObjectName(QStringLiteral("checkCUBFS_Lp"));
-        checkCUBFS_Lp->setGeometry(QRect(10, 280, 81, 17));
-        checkCP = new QCheckBox(centralWidget);
-        checkCP->setObjectName(QStringLiteral("checkCP"));
-        checkCP->setGeometry(QRect(10, 390, 70, 17));
-        checkDegree = new QCheckBox(centralWidget);
-        checkDegree->setObjectName(QStringLiteral("checkDegree"));
-        checkDegree->setGeometry(QRect(10, 490, 70, 17));
-        checkCUBC = new QCheckBox(centralWidget);
-        checkCUBC->setObjectName(QStringLiteral("checkCUBC"));
-        checkCUBC->setGeometry(QRect(10, 560, 70, 17));
-        checkMaslov = new QCheckBox(centralWidget);
-        checkMaslov->setObjectName(QStringLiteral("checkMaslov"));
-        checkMaslov->setGeometry(QRect(10, 630, 70, 17));
-        checkConvertNII = new QCheckBox(centralWidget);
-        checkConvertNII->setObjectName(QStringLiteral("checkConvertNII"));
-        checkConvertNII->setGeometry(QRect(10, 710, 81, 17));
-        lineEditCUCorMat_input_dir = new QLineEdit(centralWidget);
-        lineEditCUCorMat_input_dir->setObjectName(QStringLiteral("lineEditCUCorMat_input_dir"));
-        lineEditCUCorMat_input_dir->setGeometry(QRect(240, 40, 421, 20));
-        lineEditCUCorMat_input_dir->setClearButtonEnabled(false);
-        labelCUCorMat_input_dir = new QLabel(centralWidget);
-        labelCUCorMat_input_dir->setObjectName(QStringLiteral("labelCUCorMat_input_dir"));
-        labelCUCorMat_input_dir->setGeometry(QRect(100, 40, 51, 16));
-        lineEditCUCorMat_mask_threshold = new QLineEdit(centralWidget);
-        lineEditCUCorMat_mask_threshold->setObjectName(QStringLiteral("lineEditCUCorMat_mask_threshold"));
-        lineEditCUCorMat_mask_threshold->setGeometry(QRect(240, 70, 421, 20));
-        labelCUCorMat_mask_threshold = new QLabel(centralWidget);
-        labelCUCorMat_mask_threshold->setObjectName(QStringLiteral("labelCUCorMat_mask_threshold"));
-        labelCUCorMat_mask_threshold->setGeometry(QRect(100, 70, 81, 16));
-        lineEditCUCorMat_average_flag = new QLineEdit(centralWidget);
-        lineEditCUCorMat_average_flag->setObjectName(QStringLiteral("lineEditCUCorMat_average_flag"));
-        lineEditCUCorMat_average_flag->setGeometry(QRect(240, 100, 421, 20));
-        labelCUCorMat_average_flag = new QLabel(centralWidget);
-        labelCUCorMat_average_flag->setObjectName(QStringLiteral("labelCUCorMat_average_flag"));
-        labelCUCorMat_average_flag->setGeometry(QRect(100, 100, 71, 16));
-        lineEditCUCorMat_binary_thresholds = new QLineEdit(centralWidget);
-        lineEditCUCorMat_binary_thresholds->setObjectName(QStringLiteral("lineEditCUCorMat_binary_thresholds"));
-        lineEditCUCorMat_binary_thresholds->setGeometry(QRect(240, 130, 421, 20));
-        labelCUCorMat_binary_thresholds = new QLabel(centralWidget);
-        labelCUCorMat_binary_thresholds->setObjectName(QStringLiteral("labelCUCorMat_binary_thresholds"));
-        labelCUCorMat_binary_thresholds->setGeometry(QRect(100, 130, 101, 16));
-        labelCUBFW_Lp_input_dir = new QLabel(centralWidget);
-        labelCUBFW_Lp_input_dir->setObjectName(QStringLiteral("labelCUBFW_Lp_input_dir"));
-        labelCUBFW_Lp_input_dir->setGeometry(QRect(100, 210, 51, 16));
-        lineEditCUBFW_Lp_input_dir = new QLineEdit(centralWidget);
-        lineEditCUBFW_Lp_input_dir->setObjectName(QStringLiteral("lineEditCUBFW_Lp_input_dir"));
-        lineEditCUBFW_Lp_input_dir->setGeometry(QRect(240, 210, 421, 20));
-        lineEditCUBFW_Lp_num_of_random_networks = new QLineEdit(centralWidget);
-        lineEditCUBFW_Lp_num_of_random_networks->setObjectName(QStringLiteral("lineEditCUBFW_Lp_num_of_random_networks"));
-        lineEditCUBFW_Lp_num_of_random_networks->setGeometry(QRect(240, 240, 421, 20));
-        lineEditCUBFS_Lp_input_dir = new QLineEdit(centralWidget);
-        lineEditCUBFS_Lp_input_dir->setObjectName(QStringLiteral("lineEditCUBFS_Lp_input_dir"));
-        lineEditCUBFS_Lp_input_dir->setGeometry(QRect(240, 320, 421, 20));
-        labelCUBFW_Lp_num_of_random_networks = new QLabel(centralWidget);
-        labelCUBFW_Lp_num_of_random_networks->setObjectName(QStringLiteral("labelCUBFW_Lp_num_of_random_networks"));
-        labelCUBFW_Lp_num_of_random_networks->setGeometry(QRect(100, 240, 131, 16));
-        labelCUBFS_Lp_num_of_random_networks = new QLabel(centralWidget);
-        labelCUBFS_Lp_num_of_random_networks->setObjectName(QStringLiteral("labelCUBFS_Lp_num_of_random_networks"));
-        labelCUBFS_Lp_num_of_random_networks->setGeometry(QRect(100, 350, 131, 16));
-        lineEditCUBFS_Lp_num_of_random_networks = new QLineEdit(centralWidget);
-        lineEditCUBFS_Lp_num_of_random_networks->setObjectName(QStringLiteral("lineEditCUBFS_Lp_num_of_random_networks"));
-        lineEditCUBFS_Lp_num_of_random_networks->setGeometry(QRect(240, 350, 421, 20));
-        labelCUBFS_Lp_input_dir = new QLabel(centralWidget);
-        labelCUBFS_Lp_input_dir->setObjectName(QStringLiteral("labelCUBFS_Lp_input_dir"));
-        labelCUBFS_Lp_input_dir->setGeometry(QRect(100, 320, 51, 16));
-        labelCp_input_dir = new QLabel(centralWidget);
-        labelCp_input_dir->setObjectName(QStringLiteral("labelCp_input_dir"));
-        labelCp_input_dir->setGeometry(QRect(100, 420, 51, 16));
-        lineEditCp_input_dir = new QLineEdit(centralWidget);
-        lineEditCp_input_dir->setObjectName(QStringLiteral("lineEditCp_input_dir"));
-        lineEditCp_input_dir->setGeometry(QRect(240, 420, 421, 20));
-        labelCp_num_of_random_networks = new QLabel(centralWidget);
-        labelCp_num_of_random_networks->setObjectName(QStringLiteral("labelCp_num_of_random_networks"));
-        labelCp_num_of_random_networks->setGeometry(QRect(100, 450, 131, 16));
-        lineEditCp_num_of_random_networks = new QLineEdit(centralWidget);
-        lineEditCp_num_of_random_networks->setObjectName(QStringLiteral("lineEditCp_num_of_random_networks"));
-        lineEditCp_num_of_random_networks->setGeometry(QRect(240, 450, 421, 20));
-        labelDegree_input_dir = new QLabel(centralWidget);
-        labelDegree_input_dir->setObjectName(QStringLiteral("labelDegree_input_dir"));
-        labelDegree_input_dir->setGeometry(QRect(100, 520, 51, 16));
-        lineEditDegree_input_dir = new QLineEdit(centralWidget);
-        lineEditDegree_input_dir->setObjectName(QStringLiteral("lineEditDegree_input_dir"));
-        lineEditDegree_input_dir->setGeometry(QRect(240, 520, 421, 20));
-        labelCUBC_input_dir = new QLabel(centralWidget);
-        labelCUBC_input_dir->setObjectName(QStringLiteral("labelCUBC_input_dir"));
-        labelCUBC_input_dir->setGeometry(QRect(100, 590, 51, 16));
-        lineEditCUBC_input_dir = new QLineEdit(centralWidget);
-        lineEditCUBC_input_dir->setObjectName(QStringLiteral("lineEditCUBC_input_dir"));
-        lineEditCUBC_input_dir->setGeometry(QRect(240, 590, 421, 20));
-        labelMaslov_input_csr_file = new QLabel(centralWidget);
-        labelMaslov_input_csr_file->setObjectName(QStringLiteral("labelMaslov_input_csr_file"));
-        labelMaslov_input_csr_file->setGeometry(QRect(100, 670, 71, 16));
-        lineEditMaslov_input_csr_file = new QLineEdit(centralWidget);
-        lineEditMaslov_input_csr_file->setObjectName(QStringLiteral("lineEditMaslov_input_csr_file"));
-        lineEditMaslov_input_csr_file->setGeometry(QRect(240, 670, 421, 20));
-        labelConvertNII_input_file = new QLabel(centralWidget);
-        labelConvertNII_input_file->setObjectName(QStringLiteral("labelConvertNII_input_file"));
-        labelConvertNII_input_file->setGeometry(QRect(100, 740, 71, 16));
-        lineEditConvertNII_input_file = new QLineEdit(centralWidget);
-        lineEditConvertNII_input_file->setObjectName(QStringLiteral("lineEditConvertNII_input_file"));
-        lineEditConvertNII_input_file->setGeometry(QRect(240, 740, 421, 20));
-        lineEditConvertNII_mask_nii = new QLineEdit(centralWidget);
-        lineEditConvertNII_mask_nii->setObjectName(QStringLiteral("lineEditConvertNII_mask_nii"));
-        lineEditConvertNII_mask_nii->setGeometry(QRect(240, 770, 421, 20));
-        labelConvertNII_mask_nii = new QLabel(centralWidget);
-        labelConvertNII_mask_nii->setObjectName(QStringLiteral("labelConvertNII_mask_nii"));
-        labelConvertNII_mask_nii->setGeometry(QRect(100, 770, 71, 16));
-        lineEditConvertNII_mask_threshold = new QLineEdit(centralWidget);
-        lineEditConvertNII_mask_threshold->setObjectName(QStringLiteral("lineEditConvertNII_mask_threshold"));
-        lineEditConvertNII_mask_threshold->setGeometry(QRect(240, 800, 421, 20));
-        labelConvertNII_mask_threshold = new QLabel(centralWidget);
-        labelConvertNII_mask_threshold->setObjectName(QStringLiteral("labelConvertNII_mask_threshold"));
-        labelConvertNII_mask_threshold->setGeometry(QRect(100, 800, 81, 16));
-        pushButtonCreate = new QPushButton(centralWidget);
-        pushButtonCreate->setObjectName(QStringLiteral("pushButtonCreate"));
-        pushButtonCreate->setGeometry(QRect(600, 830, 91, 23));
-        toolButtonCUCorMat_input_dir = new QToolButton(centralWidget);
-        toolButtonCUCorMat_input_dir->setObjectName(QStringLiteral("toolButtonCUCorMat_input_dir"));
-        toolButtonCUCorMat_input_dir->setGeometry(QRect(670, 40, 25, 19));
-        toolButtonCUBFW_Lp_input_dir = new QToolButton(centralWidget);
-        toolButtonCUBFW_Lp_input_dir->setObjectName(QStringLiteral("toolButtonCUBFW_Lp_input_dir"));
-        toolButtonCUBFW_Lp_input_dir->setGeometry(QRect(670, 210, 25, 19));
-        toolButtonCUBFS_Lp_input_dir = new QToolButton(centralWidget);
-        toolButtonCUBFS_Lp_input_dir->setObjectName(QStringLiteral("toolButtonCUBFS_Lp_input_dir"));
-        toolButtonCUBFS_Lp_input_dir->setGeometry(QRect(670, 310, 25, 19));
-        toolButtonCp_input_dir = new QToolButton(centralWidget);
-        toolButtonCp_input_dir->setObjectName(QStringLiteral("toolButtonCp_input_dir"));
-        toolButtonCp_input_dir->setGeometry(QRect(670, 420, 25, 19));
-        toolButtonDegree_input_dir = new QToolButton(centralWidget);
-        toolButtonDegree_input_dir->setObjectName(QStringLiteral("toolButtonDegree_input_dir"));
-        toolButtonDegree_input_dir->setGeometry(QRect(670, 520, 25, 19));
-        toolButtonCUBC_input_dir = new QToolButton(centralWidget);
-        toolButtonCUBC_input_dir->setObjectName(QStringLiteral("toolButtonCUBC_input_dir"));
-        toolButtonCUBC_input_dir->setGeometry(QRect(670, 590, 25, 19));
-        toolButtonMaslov_input_csr_file = new QToolButton(centralWidget);
-        toolButtonMaslov_input_csr_file->setObjectName(QStringLiteral("toolButtonMaslov_input_csr_file"));
-        toolButtonMaslov_input_csr_file->setGeometry(QRect(670, 670, 25, 19));
-        toolButtonConvertNII_input_file = new QToolButton(centralWidget);
-        toolButtonConvertNII_input_file->setObjectName(QStringLiteral("toolButtonConvertNII_input_file"));
-        toolButtonConvertNII_input_file->setGeometry(QRect(670, 740, 25, 19));
-        toolButtonConvertNII_mask_nii = new QToolButton(centralWidget);
-        toolButtonConvertNII_mask_nii->setObjectName(QStringLiteral("toolButtonConvertNII_mask_nii"));
-        toolButtonConvertNII_mask_nii->setGeometry(QRect(670, 770, 25, 19));
-        label = new QLabel(centralWidget);
+
+        gridLayout->addWidget(checkCUCorMat, 0, 0, 1, 1);
+
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(100, 10, 491, 16));
         QFont font;
         font.setUnderline(false);
         label->setFont(font);
         label->setWordWrap(true);
-        label_2 = new QLabel(centralWidget);
+
+        gridLayout->addWidget(label, 0, 1, 1, 6);
+
+        labelCUCorMat_input_dir = new QLabel(layoutWidget);
+        labelCUCorMat_input_dir->setObjectName(QStringLiteral("labelCUCorMat_input_dir"));
+
+        gridLayout->addWidget(labelCUCorMat_input_dir, 1, 1, 1, 1);
+
+        lineEditCUCorMat_input_dir = new QLineEdit(layoutWidget);
+        lineEditCUCorMat_input_dir->setObjectName(QStringLiteral("lineEditCUCorMat_input_dir"));
+        lineEditCUCorMat_input_dir->setClearButtonEnabled(false);
+
+        gridLayout->addWidget(lineEditCUCorMat_input_dir, 1, 6, 1, 1);
+
+        toolButtonCUCorMat_input_dir = new QToolButton(layoutWidget);
+        toolButtonCUCorMat_input_dir->setObjectName(QStringLiteral("toolButtonCUCorMat_input_dir"));
+
+        gridLayout->addWidget(toolButtonCUCorMat_input_dir, 1, 7, 1, 1);
+
+        labelCUCorMat_mask_threshold = new QLabel(layoutWidget);
+        labelCUCorMat_mask_threshold->setObjectName(QStringLiteral("labelCUCorMat_mask_threshold"));
+
+        gridLayout->addWidget(labelCUCorMat_mask_threshold, 2, 1, 1, 3);
+
+        lineEditCUCorMat_mask_threshold = new QLineEdit(layoutWidget);
+        lineEditCUCorMat_mask_threshold->setObjectName(QStringLiteral("lineEditCUCorMat_mask_threshold"));
+
+        gridLayout->addWidget(lineEditCUCorMat_mask_threshold, 2, 6, 1, 1);
+
+        labelCUCorMat_average_flag = new QLabel(layoutWidget);
+        labelCUCorMat_average_flag->setObjectName(QStringLiteral("labelCUCorMat_average_flag"));
+
+        gridLayout->addWidget(labelCUCorMat_average_flag, 3, 1, 1, 2);
+
+        lineEditCUCorMat_average_flag = new QLineEdit(layoutWidget);
+        lineEditCUCorMat_average_flag->setObjectName(QStringLiteral("lineEditCUCorMat_average_flag"));
+
+        gridLayout->addWidget(lineEditCUCorMat_average_flag, 3, 6, 1, 1);
+
+        labelCUCorMat_binary_thresholds = new QLabel(layoutWidget);
+        labelCUCorMat_binary_thresholds->setObjectName(QStringLiteral("labelCUCorMat_binary_thresholds"));
+
+        gridLayout->addWidget(labelCUCorMat_binary_thresholds, 4, 1, 1, 4);
+
+        lineEditCUCorMat_binary_thresholds = new QLineEdit(layoutWidget);
+        lineEditCUCorMat_binary_thresholds->setObjectName(QStringLiteral("lineEditCUCorMat_binary_thresholds"));
+
+        gridLayout->addWidget(lineEditCUCorMat_binary_thresholds, 4, 6, 1, 1);
+
+        checkCUBFW_Lp = new QCheckBox(layoutWidget);
+        checkCUBFW_Lp->setObjectName(QStringLiteral("checkCUBFW_Lp"));
+
+        gridLayout->addWidget(checkCUBFW_Lp, 5, 0, 1, 1);
+
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(100, 170, 601, 31));
         label_2->setWordWrap(true);
-        label_3 = new QLabel(centralWidget);
+
+        gridLayout->addWidget(label_2, 5, 1, 1, 7);
+
+        labelCUBFW_Lp_input_dir = new QLabel(layoutWidget);
+        labelCUBFW_Lp_input_dir->setObjectName(QStringLiteral("labelCUBFW_Lp_input_dir"));
+
+        gridLayout->addWidget(labelCUBFW_Lp_input_dir, 6, 1, 1, 1);
+
+        lineEditCUBFW_Lp_input_dir = new QLineEdit(layoutWidget);
+        lineEditCUBFW_Lp_input_dir->setObjectName(QStringLiteral("lineEditCUBFW_Lp_input_dir"));
+
+        gridLayout->addWidget(lineEditCUBFW_Lp_input_dir, 6, 6, 1, 1);
+
+        toolButtonCUBFW_Lp_input_dir = new QToolButton(layoutWidget);
+        toolButtonCUBFW_Lp_input_dir->setObjectName(QStringLiteral("toolButtonCUBFW_Lp_input_dir"));
+
+        gridLayout->addWidget(toolButtonCUBFW_Lp_input_dir, 6, 7, 1, 1);
+
+        labelCUBFW_Lp_num_of_random_networks = new QLabel(layoutWidget);
+        labelCUBFW_Lp_num_of_random_networks->setObjectName(QStringLiteral("labelCUBFW_Lp_num_of_random_networks"));
+
+        gridLayout->addWidget(labelCUBFW_Lp_num_of_random_networks, 7, 1, 1, 5);
+
+        lineEditCUBFW_Lp_num_of_random_networks = new QLineEdit(layoutWidget);
+        lineEditCUBFW_Lp_num_of_random_networks->setObjectName(QStringLiteral("lineEditCUBFW_Lp_num_of_random_networks"));
+
+        gridLayout->addWidget(lineEditCUBFW_Lp_num_of_random_networks, 7, 6, 1, 1);
+
+        checkCUBFS_Lp = new QCheckBox(layoutWidget);
+        checkCUBFS_Lp->setObjectName(QStringLiteral("checkCUBFS_Lp"));
+
+        gridLayout->addWidget(checkCUBFS_Lp, 8, 0, 1, 1);
+
+        label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(100, 280, 601, 31));
         label_3->setWordWrap(true);
-        label_4 = new QLabel(centralWidget);
+
+        gridLayout->addWidget(label_3, 8, 1, 1, 7);
+
+        labelCUBFS_Lp_input_dir = new QLabel(layoutWidget);
+        labelCUBFS_Lp_input_dir->setObjectName(QStringLiteral("labelCUBFS_Lp_input_dir"));
+
+        gridLayout->addWidget(labelCUBFS_Lp_input_dir, 9, 1, 1, 1);
+
+        lineEditCUBFS_Lp_input_dir = new QLineEdit(layoutWidget);
+        lineEditCUBFS_Lp_input_dir->setObjectName(QStringLiteral("lineEditCUBFS_Lp_input_dir"));
+
+        gridLayout->addWidget(lineEditCUBFS_Lp_input_dir, 9, 6, 1, 1);
+
+        toolButtonCUBFS_Lp_input_dir = new QToolButton(layoutWidget);
+        toolButtonCUBFS_Lp_input_dir->setObjectName(QStringLiteral("toolButtonCUBFS_Lp_input_dir"));
+
+        gridLayout->addWidget(toolButtonCUBFS_Lp_input_dir, 9, 7, 1, 1);
+
+        labelCUBFS_Lp_num_of_random_networks = new QLabel(layoutWidget);
+        labelCUBFS_Lp_num_of_random_networks->setObjectName(QStringLiteral("labelCUBFS_Lp_num_of_random_networks"));
+
+        gridLayout->addWidget(labelCUBFS_Lp_num_of_random_networks, 10, 1, 1, 5);
+
+        lineEditCUBFS_Lp_num_of_random_networks = new QLineEdit(layoutWidget);
+        lineEditCUBFS_Lp_num_of_random_networks->setObjectName(QStringLiteral("lineEditCUBFS_Lp_num_of_random_networks"));
+
+        gridLayout->addWidget(lineEditCUBFS_Lp_num_of_random_networks, 10, 6, 1, 1);
+
+        checkCP = new QCheckBox(layoutWidget);
+        checkCP->setObjectName(QStringLiteral("checkCP"));
+
+        gridLayout->addWidget(checkCP, 11, 0, 1, 1);
+
+        label_4 = new QLabel(layoutWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(100, 390, 601, 16));
         label_4->setWordWrap(true);
-        label_5 = new QLabel(centralWidget);
+
+        gridLayout->addWidget(label_4, 11, 1, 1, 6);
+
+        labelCp_input_dir = new QLabel(layoutWidget);
+        labelCp_input_dir->setObjectName(QStringLiteral("labelCp_input_dir"));
+
+        gridLayout->addWidget(labelCp_input_dir, 12, 1, 1, 1);
+
+        lineEditCp_input_dir = new QLineEdit(layoutWidget);
+        lineEditCp_input_dir->setObjectName(QStringLiteral("lineEditCp_input_dir"));
+
+        gridLayout->addWidget(lineEditCp_input_dir, 12, 6, 1, 1);
+
+        toolButtonCp_input_dir = new QToolButton(layoutWidget);
+        toolButtonCp_input_dir->setObjectName(QStringLiteral("toolButtonCp_input_dir"));
+
+        gridLayout->addWidget(toolButtonCp_input_dir, 12, 7, 1, 1);
+
+        labelCp_num_of_random_networks = new QLabel(layoutWidget);
+        labelCp_num_of_random_networks->setObjectName(QStringLiteral("labelCp_num_of_random_networks"));
+
+        gridLayout->addWidget(labelCp_num_of_random_networks, 13, 1, 1, 5);
+
+        lineEditCp_num_of_random_networks = new QLineEdit(layoutWidget);
+        lineEditCp_num_of_random_networks->setObjectName(QStringLiteral("lineEditCp_num_of_random_networks"));
+
+        gridLayout->addWidget(lineEditCp_num_of_random_networks, 13, 6, 1, 1);
+
+        checkDegree = new QCheckBox(layoutWidget);
+        checkDegree->setObjectName(QStringLiteral("checkDegree"));
+
+        gridLayout->addWidget(checkDegree, 14, 0, 1, 1);
+
+        label_5 = new QLabel(layoutWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(100, 490, 601, 16));
         label_5->setWordWrap(true);
-        label_6 = new QLabel(centralWidget);
+
+        gridLayout->addWidget(label_5, 14, 1, 1, 6);
+
+        labelDegree_input_dir = new QLabel(layoutWidget);
+        labelDegree_input_dir->setObjectName(QStringLiteral("labelDegree_input_dir"));
+
+        gridLayout->addWidget(labelDegree_input_dir, 15, 1, 1, 1);
+
+        lineEditDegree_input_dir = new QLineEdit(layoutWidget);
+        lineEditDegree_input_dir->setObjectName(QStringLiteral("lineEditDegree_input_dir"));
+
+        gridLayout->addWidget(lineEditDegree_input_dir, 15, 6, 1, 1);
+
+        toolButtonDegree_input_dir = new QToolButton(layoutWidget);
+        toolButtonDegree_input_dir->setObjectName(QStringLiteral("toolButtonDegree_input_dir"));
+
+        gridLayout->addWidget(toolButtonDegree_input_dir, 15, 7, 1, 1);
+
+        checkCUBC = new QCheckBox(layoutWidget);
+        checkCUBC->setObjectName(QStringLiteral("checkCUBC"));
+
+        gridLayout->addWidget(checkCUBC, 16, 0, 1, 1);
+
+        label_6 = new QLabel(layoutWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(100, 560, 601, 16));
         label_6->setWordWrap(true);
-        label_7 = new QLabel(centralWidget);
+
+        gridLayout->addWidget(label_6, 16, 1, 1, 6);
+
+        labelCUBC_input_dir = new QLabel(layoutWidget);
+        labelCUBC_input_dir->setObjectName(QStringLiteral("labelCUBC_input_dir"));
+
+        gridLayout->addWidget(labelCUBC_input_dir, 17, 1, 1, 1);
+
+        lineEditCUBC_input_dir = new QLineEdit(layoutWidget);
+        lineEditCUBC_input_dir->setObjectName(QStringLiteral("lineEditCUBC_input_dir"));
+
+        gridLayout->addWidget(lineEditCUBC_input_dir, 17, 6, 1, 1);
+
+        toolButtonCUBC_input_dir = new QToolButton(layoutWidget);
+        toolButtonCUBC_input_dir->setObjectName(QStringLiteral("toolButtonCUBC_input_dir"));
+
+        gridLayout->addWidget(toolButtonCUBC_input_dir, 17, 7, 1, 1);
+
+        checkMaslov = new QCheckBox(layoutWidget);
+        checkMaslov->setObjectName(QStringLiteral("checkMaslov"));
+
+        gridLayout->addWidget(checkMaslov, 18, 0, 1, 1);
+
+        label_7 = new QLabel(layoutWidget);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(100, 630, 601, 31));
         label_7->setWordWrap(true);
-        label_8 = new QLabel(centralWidget);
+
+        gridLayout->addWidget(label_7, 18, 1, 1, 7);
+
+        labelMaslov_input_csr_file = new QLabel(layoutWidget);
+        labelMaslov_input_csr_file->setObjectName(QStringLiteral("labelMaslov_input_csr_file"));
+
+        gridLayout->addWidget(labelMaslov_input_csr_file, 19, 1, 1, 2);
+
+        lineEditMaslov_input_csr_file = new QLineEdit(layoutWidget);
+        lineEditMaslov_input_csr_file->setObjectName(QStringLiteral("lineEditMaslov_input_csr_file"));
+
+        gridLayout->addWidget(lineEditMaslov_input_csr_file, 19, 6, 1, 1);
+
+        toolButtonMaslov_input_csr_file = new QToolButton(layoutWidget);
+        toolButtonMaslov_input_csr_file->setObjectName(QStringLiteral("toolButtonMaslov_input_csr_file"));
+
+        gridLayout->addWidget(toolButtonMaslov_input_csr_file, 19, 7, 1, 1);
+
+        checkConvertNII = new QCheckBox(layoutWidget);
+        checkConvertNII->setObjectName(QStringLiteral("checkConvertNII"));
+
+        gridLayout->addWidget(checkConvertNII, 20, 0, 1, 1);
+
+        label_8 = new QLabel(layoutWidget);
         label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(100, 710, 601, 16));
         label_8->setWordWrap(true);
+
+        gridLayout->addWidget(label_8, 20, 1, 1, 6);
+
+        labelConvertNII_input_file = new QLabel(layoutWidget);
+        labelConvertNII_input_file->setObjectName(QStringLiteral("labelConvertNII_input_file"));
+
+        gridLayout->addWidget(labelConvertNII_input_file, 21, 1, 1, 1);
+
+        lineEditConvertNII_input_file = new QLineEdit(layoutWidget);
+        lineEditConvertNII_input_file->setObjectName(QStringLiteral("lineEditConvertNII_input_file"));
+
+        gridLayout->addWidget(lineEditConvertNII_input_file, 21, 6, 1, 1);
+
+        toolButtonConvertNII_input_file = new QToolButton(layoutWidget);
+        toolButtonConvertNII_input_file->setObjectName(QStringLiteral("toolButtonConvertNII_input_file"));
+
+        gridLayout->addWidget(toolButtonConvertNII_input_file, 21, 7, 1, 1);
+
+        labelConvertNII_mask_nii = new QLabel(layoutWidget);
+        labelConvertNII_mask_nii->setObjectName(QStringLiteral("labelConvertNII_mask_nii"));
+
+        gridLayout->addWidget(labelConvertNII_mask_nii, 22, 1, 1, 1);
+
+        lineEditConvertNII_mask_nii = new QLineEdit(layoutWidget);
+        lineEditConvertNII_mask_nii->setObjectName(QStringLiteral("lineEditConvertNII_mask_nii"));
+
+        gridLayout->addWidget(lineEditConvertNII_mask_nii, 22, 6, 1, 1);
+
+        toolButtonConvertNII_mask_nii = new QToolButton(layoutWidget);
+        toolButtonConvertNII_mask_nii->setObjectName(QStringLiteral("toolButtonConvertNII_mask_nii"));
+
+        gridLayout->addWidget(toolButtonConvertNII_mask_nii, 22, 7, 1, 1);
+
+        labelConvertNII_mask_threshold = new QLabel(layoutWidget);
+        labelConvertNII_mask_threshold->setObjectName(QStringLiteral("labelConvertNII_mask_threshold"));
+
+        gridLayout->addWidget(labelConvertNII_mask_threshold, 23, 1, 1, 3);
+
+        lineEditConvertNII_mask_threshold = new QLineEdit(layoutWidget);
+        lineEditConvertNII_mask_threshold->setObjectName(QStringLiteral("lineEditConvertNII_mask_threshold"));
+
+        gridLayout->addWidget(lineEditConvertNII_mask_threshold, 23, 6, 1, 1);
+
+        pushButtonCreate = new QPushButton(layoutWidget);
+        pushButtonCreate->setObjectName(QStringLiteral("pushButtonCreate"));
+
+        gridLayout->addWidget(pushButtonCreate, 24, 6, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(MainWindow);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 713, 21));
-        MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(MainWindow);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        MainWindow->setStatusBar(statusBar);
 
         retranslateUi(MainWindow);
 
@@ -316,47 +427,47 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "BNA Launcher", 0));
         checkCUCorMat->setText(QApplication::translate("MainWindow", "CUCorMat", 0));
-        checkCUBFW_Lp->setText(QApplication::translate("MainWindow", "CUBFW_Lp", 0));
-        checkCUBFS_Lp->setText(QApplication::translate("MainWindow", "CUBFS_Lp", 0));
-        checkCP->setText(QApplication::translate("MainWindow", "Cp", 0));
-        checkDegree->setText(QApplication::translate("MainWindow", "Degree", 0));
-        checkCUBC->setText(QApplication::translate("MainWindow", "CUBC", 0));
-        checkMaslov->setText(QApplication::translate("MainWindow", "Maslov", 0));
-        checkConvertNII->setText(QApplication::translate("MainWindow", "ConvertNII", 0));
+        label->setText(QApplication::translate("MainWindow", "Construct correlation matrices from BOLD signals.", 0));
         labelCUCorMat_input_dir->setText(QApplication::translate("MainWindow", "input_dir", 0));
+        toolButtonCUCorMat_input_dir->setText(QApplication::translate("MainWindow", "...", 0));
         labelCUCorMat_mask_threshold->setText(QApplication::translate("MainWindow", "mask_threshold", 0));
         labelCUCorMat_average_flag->setText(QApplication::translate("MainWindow", "average_flag", 0));
         labelCUCorMat_binary_thresholds->setText(QApplication::translate("MainWindow", "binary_threshold(s)", 0));
+        checkCUBFW_Lp->setText(QApplication::translate("MainWindow", "CUBFW_Lp", 0));
+        label_2->setText(QApplication::translate("MainWindow", "Calculate the characteristic path length of the network and compare with K (user specified) random networks. Based on blocked Floyd-Warshall algorithm (BFW).", 0));
         labelCUBFW_Lp_input_dir->setText(QApplication::translate("MainWindow", "input_dir", 0));
+        toolButtonCUBFW_Lp_input_dir->setText(QApplication::translate("MainWindow", "...", 0));
         labelCUBFW_Lp_num_of_random_networks->setText(QApplication::translate("MainWindow", "num_of_random_networks", 0));
-        labelCUBFS_Lp_num_of_random_networks->setText(QApplication::translate("MainWindow", "num_of_random_networks", 0));
+        checkCUBFS_Lp->setText(QApplication::translate("MainWindow", "CUBFS_Lp", 0));
+        label_3->setText(QApplication::translate("MainWindow", "Calculate the characteristic path length of the network and compare with K (user specified) random networks. Based on Breadth  First  Search (BFW).", 0));
         labelCUBFS_Lp_input_dir->setText(QApplication::translate("MainWindow", "input_dir", 0));
+        toolButtonCUBFS_Lp_input_dir->setText(QApplication::translate("MainWindow", "...", 0));
+        labelCUBFS_Lp_num_of_random_networks->setText(QApplication::translate("MainWindow", "num_of_random_networks", 0));
+        checkCP->setText(QApplication::translate("MainWindow", "Cp", 0));
+        label_4->setText(QApplication::translate("MainWindow", "Calculate clustering coefficient (Cp) of the network and compare the results with  K  (user specified) random networks.", 0));
         labelCp_input_dir->setText(QApplication::translate("MainWindow", "input_dir", 0));
+        toolButtonCp_input_dir->setText(QApplication::translate("MainWindow", "...", 0));
         labelCp_num_of_random_networks->setText(QApplication::translate("MainWindow", "num_of_random_networks", 0));
+        checkDegree->setText(QApplication::translate("MainWindow", "Degree", 0));
+        label_5->setText(QApplication::translate("MainWindow", "Calculate the degree centrality of the network.", 0));
         labelDegree_input_dir->setText(QApplication::translate("MainWindow", "input_dir", 0));
+        toolButtonDegree_input_dir->setText(QApplication::translate("MainWindow", "...", 0));
+        checkCUBC->setText(QApplication::translate("MainWindow", "CUBC", 0));
+        label_6->setText(QApplication::translate("MainWindow", "Calculate the betweenness centrality of the network.", 0));
         labelCUBC_input_dir->setText(QApplication::translate("MainWindow", "input_dir", 0));
+        toolButtonCUBC_input_dir->setText(QApplication::translate("MainWindow", "...", 0));
+        checkMaslov->setText(QApplication::translate("MainWindow", "Maslov", 0));
+        label_7->setText(QApplication::translate("MainWindow", "Generate a random network that has exactly the same nodal degree with the original network, using the Maslov rewiring method.", 0));
         labelMaslov_input_csr_file->setText(QApplication::translate("MainWindow", "input_csr_file", 0));
+        toolButtonMaslov_input_csr_file->setText(QApplication::translate("MainWindow", "...", 0));
+        checkConvertNII->setText(QApplication::translate("MainWindow", "ConvertNII", 0));
+        label_8->setText(QApplication::translate("MainWindow", "Put the .cp .eloc .deg .bc results back to the 3-D matrix and converts these files to the standard NII format.", 0));
         labelConvertNII_input_file->setText(QApplication::translate("MainWindow", "input_file", 0));
+        toolButtonConvertNII_input_file->setText(QApplication::translate("MainWindow", "...", 0));
         labelConvertNII_mask_nii->setText(QApplication::translate("MainWindow", "mask.nii", 0));
+        toolButtonConvertNII_mask_nii->setText(QApplication::translate("MainWindow", "...", 0));
         labelConvertNII_mask_threshold->setText(QApplication::translate("MainWindow", "mask_threshold", 0));
         pushButtonCreate->setText(QApplication::translate("MainWindow", "Create Script", 0));
-        toolButtonCUCorMat_input_dir->setText(QApplication::translate("MainWindow", "...", 0));
-        toolButtonCUBFW_Lp_input_dir->setText(QApplication::translate("MainWindow", "...", 0));
-        toolButtonCUBFS_Lp_input_dir->setText(QApplication::translate("MainWindow", "...", 0));
-        toolButtonCp_input_dir->setText(QApplication::translate("MainWindow", "...", 0));
-        toolButtonDegree_input_dir->setText(QApplication::translate("MainWindow", "...", 0));
-        toolButtonCUBC_input_dir->setText(QApplication::translate("MainWindow", "...", 0));
-        toolButtonMaslov_input_csr_file->setText(QApplication::translate("MainWindow", "...", 0));
-        toolButtonConvertNII_input_file->setText(QApplication::translate("MainWindow", "...", 0));
-        toolButtonConvertNII_mask_nii->setText(QApplication::translate("MainWindow", "...", 0));
-        label->setText(QApplication::translate("MainWindow", "Construct correlation matrices from BOLD signals.", 0));
-        label_2->setText(QApplication::translate("MainWindow", "Calculate the characteristic path length of the network and compare with K (user specified) random networks. Based on blocked Floyd-Warshall algorithm (BFW).", 0));
-        label_3->setText(QApplication::translate("MainWindow", "Calculate the characteristic path length of the network and compare with K (user specified) random networks. Based on Breadth  First  Search (BFW).", 0));
-        label_4->setText(QApplication::translate("MainWindow", "Calculate clustering coefficient (Cp) of the network and compare the results with  K  (user specified) random networks.", 0));
-        label_5->setText(QApplication::translate("MainWindow", "Calculate the degree centrality of the network.", 0));
-        label_6->setText(QApplication::translate("MainWindow", "Calculate the betweenness centrality of the network.", 0));
-        label_7->setText(QApplication::translate("MainWindow", "Generate a random network that has exactly the same nodal degree with the original network, using the Maslov rewiring method.", 0));
-        label_8->setText(QApplication::translate("MainWindow", "Put the .cp .eloc .deg .bc results back to the 3-D matrix and converts these files to the standard NII format.", 0));
     } // retranslateUi
 
 };
