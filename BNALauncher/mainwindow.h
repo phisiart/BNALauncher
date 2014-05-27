@@ -26,16 +26,19 @@ private:
     Ui::MainWindow *ui;
 
 private slots:
-    void on_pushButtonCreate_clicked();
-    void on_toolButtonCUCorMat_input_dir_clicked();
+    void on_pushButtonSave_clicked();
+    void on_pushButtonLoad_clicked();
+    void on_toolButtonCUCorMat_Dir_for_BOLD_clicked();
     void on_toolButtonCUBFW_Lp_input_dir_clicked();
     void on_toolButtonCUBFS_Lp_input_dir_clicked();
+    void on_toolButtonBFS_MulCPU_input_dir_clicked();
     void on_toolButtonCp_input_dir_clicked();
     void on_toolButtonDegree_input_dir_clicked();
     void on_toolButtonCUBC_input_dir_clicked();
-    void on_toolButtonMaslov_input_csr_file_clicked();
     void on_toolButtonConvertNII_input_file_clicked();
-    void on_toolButtonConvertNII_mask_nii_clicked();
+    void on_toolButtonConvertNII_mask_file_clicked();
+    void on_toolButtonL_Modularity_dir_for_csr_clicked();
+    void on_toolButtonSaveDir_clicked();
 };
 
 #endif // MAINWINDOW_H
