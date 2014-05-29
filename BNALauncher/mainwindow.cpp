@@ -108,20 +108,24 @@ void MainWindow::on_pushButtonSave_clicked()
               std::endl;
     }
     
+    QString file_name = ui->lineEditSaveDir->text();
     std::cout << script.str() << std::endl;
+    QFileInfo file_info(file_name);
+    if (!file_info.exists()) {
+        file_name = QFileDialog::getSaveFileName(this,
+                                                         "Save as..." ,
+                                                         (operating_system == win32 ? "script.bat" : "script.sh"),
+                                                         (operating_system == win32 ? "script (*.bat);;Any (*.*)" : "script (*.sh);Any (*.*)"));
 
-    /*QString file_name = QFileDialog::getSaveFileName(this,
-                                                     "Save as..." ,
-                                                     (operating_system == win32 ? "script.bat" : "script.sh"),
-                                                     (operating_system == win32 ? "script (*.bat);;Any (*.*)" : "script (*.sh);Any (*.*)"));
-
+    }
     if (!file_name.isNull()) {
+        ui->lineEditSaveDir->setText(file_name);
         std::ofstream os;
         os.open(file_name.toStdString().c_str());
         os << script.str();
         os.close();
-    }*/
-    if (ui->lineEditSaveDir->text().isEmpty()) {
+    }
+    /*if (ui->lineEditSaveDir->text().isEmpty()) {
         on_toolButtonSaveDir_clicked();
     }
     QString file_name = ui->lineEditSaveDir->text();
@@ -131,17 +135,22 @@ void MainWindow::on_pushButtonSave_clicked()
         os.open(file_name.toStdString().c_str());
         os << script.str();
         os.close();
-    }
+    }*/
     
 }
 
 void MainWindow::on_pushButtonLoad_clicked()
 {
     QString file_name = ui->lineEditSaveDir->text();
-    file_name += ((operating_system == win32) ? "/script.bat" : "script.sh");
+    // file_name += ((operating_system == win32) ? "/script.bat" : "script.sh");
     QFileInfo file_info(file_name);
-    if (!file_info.exists())
-        return;
+    if (!file_info.exists()) {
+        file_name = QFileDialog::getOpenFileName(this,
+                                                 "Save as..." ,
+                                                 (operating_system == win32 ? "script.bat" : "script.sh"),
+                                                 (operating_system == win32 ? "script (*.bat);;Any (*.*)" : "script (*.sh);Any (*.*)"));
+        ui->lineEditSaveDir->setText(file_name);
+    }
     std::ifstream is;
     is.open(file_name.toStdString().c_str());
     std::string line;
