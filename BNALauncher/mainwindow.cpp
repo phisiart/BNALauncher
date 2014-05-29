@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <QFileDialog>
+#include <QMessageBox>
 #include <QtGlobal>
 #include <sstream>
 #include <fstream>
@@ -30,7 +31,16 @@ void MainWindow::on_pushButtonSave_clicked()
     std::stringstream script;
 
     if (ui->checkCUCorMat->isChecked()) {
-        script << (operating_system == win32 ? "CUCorMat.exe " : "./CUCormat ") <<
+        if (ui->lineEditCUCorMat_Dir_for_BOLD->text().isEmpty()
+                || ui->lineEditCUCorMat_threshold_for_mask->text().isEmpty()
+                || ui->lineEditCUCorMat_to_average->text().isEmpty()
+                || ui->lineEditCUCorMat_to_save_cormatrix->text().isEmpty()
+                || ui->lineEditCUCorMat_threshold_type->text().isEmpty()
+                || ui->lineEditCUCorMat_threshold_for_correlation_coefficient->text().isEmpty()) {
+            QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
+            return;
+        }
+        script << (operating_system == win32 ? ".\\CUCorMat.exe " : "./CUCormat ") <<
               ui->lineEditCUCorMat_Dir_for_BOLD->text().toStdString() <<
               ' ' <<
               ui->lineEditCUCorMat_threshold_for_mask->text().toStdString() <<
@@ -47,7 +57,12 @@ void MainWindow::on_pushButtonSave_clicked()
     }
 
     if (ui->checkCUBFW_Lp->isChecked()) {
-        script << (operating_system == win32 ? "CUBFW_Lp.exe " : "./CUBFW_Lp ") <<
+        if (ui->lineEditCUBFW_Lp_input_dir->text().isEmpty()
+                || ui->lineEditCUBFW_Lp_num_of_random_networks->text().isEmpty()) {
+            QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
+            return;
+        }
+        script << (operating_system == win32 ? ".\\CUBFW_Lp.exe " : "./CUBFW_Lp ") <<
               ui->lineEditCUBFW_Lp_input_dir->text().toStdString() <<
               ' ' <<
               ui->lineEditCUBFW_Lp_num_of_random_networks->text().toStdString() <<
@@ -55,7 +70,12 @@ void MainWindow::on_pushButtonSave_clicked()
     }
 
     if (ui->checkCUBFS_Lp->isChecked()) {
-        script << (operating_system == win32 ? "CUBFS_Lp.exe " : "./CUBFS_Lp ") <<
+        if (ui->lineEditCUBFS_Lp_input_dir->text().isEmpty()
+                || ui->lineEditCUBFS_Lp_num_of_random_networks->text().isEmpty()) {
+            QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
+            return;
+        }
+        script << (operating_system == win32 ? ".\\CUBFS_Lp.exe " : "./CUBFS_Lp ") <<
               ui->lineEditCUBFS_Lp_input_dir->text().toStdString() <<
               ' ' <<
               ui->lineEditCUBFS_Lp_num_of_random_networks->text().toStdString() <<
@@ -63,7 +83,12 @@ void MainWindow::on_pushButtonSave_clicked()
     }
 
     if (ui->checkBFS_MulCPU->isChecked()) {
-        script << (operating_system == win32 ? "BFS_MulCPU.exe " : "./BFS_MulCPU ") <<
+        if (ui->lineEditBFS_MulCPU_input_dir->text().isEmpty()
+                || ui->lineEditBFS_MulCPU_num_of_random_networks->text().isEmpty()) {
+            QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
+            return;
+        }
+        script << (operating_system == win32 ? ".\\BFS_MulCPU.exe " : "./BFS_MulCPU ") <<
               ui->lineEditBFS_MulCPU_input_dir->text().toStdString() <<
               ' ' <<
               ui->lineEditBFS_MulCPU_num_of_random_networks->text().toStdString() <<
@@ -71,7 +96,12 @@ void MainWindow::on_pushButtonSave_clicked()
     }
     
     if (ui->checkCP->isChecked()) {
-        script << (operating_system == win32 ? "Cp.exe " : "./Cp ") <<
+        if (ui->lineEditCp_input_dir->text().isEmpty()
+                || ui->lineEditCp_num_of_random_networks->text().isEmpty()) {
+            QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
+            return;
+        }
+        script << (operating_system == win32 ? ".\\Cp.exe " : "./Cp ") <<
               ui->lineEditCp_input_dir->text().toStdString() <<
               ' ' <<
               ui->lineEditCp_num_of_random_networks->text().toStdString() <<
@@ -79,19 +109,33 @@ void MainWindow::on_pushButtonSave_clicked()
     }
 
     if (ui->checkDegree->isChecked()) {
-        script << (operating_system == win32 ? "Degree.exe " : "./Degree ") <<
+        if (ui->lineEditDegree_input_dir->text().isEmpty()) {
+            QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
+            return;
+        }
+        script << (operating_system == win32 ? ".\\Degree.exe " : "./Degree ") <<
               ui->lineEditDegree_input_dir->text().toStdString() <<
               std::endl;
     }
 
     if (ui->checkCUBC->isChecked()) {
-        script << (operating_system == win32 ? "CUBC.exe " : "./CUBC ") <<
+        if (ui->lineEditCUBC_input_dir->text().isEmpty()) {
+            QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
+            return;
+        }
+        script << (operating_system == win32 ? ".\\CUBC.exe " : "./CUBC ") <<
               ui->lineEditCUBC_input_dir->text().toStdString() <<
               std::endl;
     }
 
     if (ui->checkConvertNII->isChecked()) {
-        script << (operating_system == win32 ? "ConvertNII.exe " : "./ConvertNII ") <<
+        if (ui->lineEditConvertNII_input_file->text().isEmpty()
+                || ui->lineEditConvertNII_mask_file->text().isEmpty()
+                || ui->lineEditConvertNII_mask_threshold->text().isEmpty()) {
+            QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
+            return;
+        }
+        script << (operating_system == win32 ? ".\\ConvertNII.exe " : "./ConvertNII ") <<
               ui->lineEditConvertNII_input_file->text().toStdString() <<
               ' ' <<
               ui->lineEditConvertNII_mask_file->text().toStdString() <<
@@ -101,7 +145,12 @@ void MainWindow::on_pushButtonSave_clicked()
     }
 
     if (ui->checkL_Modularity->isChecked()) {
-        script << (operating_system == win32 ? "L_Moduarity.exe " : "./L_Moduarity ") <<
+        if (ui->lineEditL_Modularity_dir_for_csr->text().isEmpty()
+                || ui->lineEditL_Modularity_num_of_random_networks->text().isEmpty()) {
+            QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
+            return;
+        }
+        script << (operating_system == win32 ? ".\\L_Moduarity.exe " : "./L_Moduarity ") <<
               ui->lineEditL_Modularity_dir_for_csr->text().toStdString() <<
               ' ' <<
               ui->lineEditL_Modularity_num_of_random_networks->text().toStdString() <<
@@ -184,7 +233,7 @@ void MainWindow::on_pushButtonLoad_clicked()
             continue;
 
 
-        if (tokens[0] == (operating_system == win32 ? "CUCorMat.exe" : "./CUCormat")) {
+        if (tokens[0] == (operating_system == win32 ? ".\\CUCorMat.exe" : "./CUCormat")) {
             if (tokens.size() >= 7) {
                 ui->checkCUCorMat->setChecked(true);
                 ui->lineEditCUCorMat_Dir_for_BOLD->setText(tokens[1].c_str());
@@ -197,48 +246,48 @@ void MainWindow::on_pushButtonLoad_clicked()
                     token6 += tokens[i] + " ";
                 ui->lineEditCUCorMat_threshold_for_correlation_coefficient->setText(token6.c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? "CUBFW_Lp.exe" : "./CUBFW_Lp")) {
+        } else if (tokens[0] == (operating_system == win32 ? ".\\CUBFW_Lp.exe" : "./CUBFW_Lp")) {
             if (tokens.size() == 3) {
                 ui->checkCUBFW_Lp->setChecked(true);
                 ui->lineEditCUBFW_Lp_input_dir->setText(tokens[1].c_str());
                 ui->lineEditCUBFW_Lp_num_of_random_networks->setText(tokens[2].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? "CUBFS_Lp.exe" : "./CUBFS_Lp")) {
+        } else if (tokens[0] == (operating_system == win32 ? ".\\CUBFS_Lp.exe" : "./CUBFS_Lp")) {
             if (tokens.size() == 3) {
                 ui->checkCUBFS_Lp->setChecked(true);
                 ui->lineEditCUBFS_Lp_input_dir->setText(tokens[1].c_str());
                 ui->lineEditCUBFS_Lp_num_of_random_networks->setText(tokens[2].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? "BFS_MulCPU.exe" : "./BFS_MulCPU")) {
+        } else if (tokens[0] == (operating_system == win32 ? ".\\BFS_MulCPU.exe" : "./BFS_MulCPU")) {
             if (tokens.size() == 3) {
                 ui->checkBFS_MulCPU->setChecked(true);
                 ui->lineEditBFS_MulCPU_input_dir->setText(tokens[1].c_str());
                 ui->lineEditBFS_MulCPU_num_of_random_networks->setText(tokens[2].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? "Cp.exe" : "./Cp")) {
+        } else if (tokens[0] == (operating_system == win32 ? ".\\Cp.exe" : "./Cp")) {
             if (tokens.size() == 3) {
                 ui->checkCP->setChecked(true);
                 ui->lineEditCp_input_dir->setText(tokens[1].c_str());
                 ui->lineEditCp_num_of_random_networks->setText(tokens[2].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? "Degree.exe" : "./Degree")) {
+        } else if (tokens[0] == (operating_system == win32 ? ".\\Degree.exe" : "./Degree")) {
             if (tokens.size() == 2) {
                 ui->checkDegree->setChecked(true);
                 ui->lineEditDegree_input_dir->setText(tokens[1].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? "CUBC.exe" : "./CUBC")) {
+        } else if (tokens[0] == (operating_system == win32 ? ".\\CUBC.exe" : "./CUBC")) {
             if (tokens.size() == 2) {
                 ui->checkCUBC->setChecked(true);
                 ui->lineEditCUBC_input_dir->setText(tokens[1].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? "ConvertNII.exe" : "./ConvertNII")) {
+        } else if (tokens[0] == (operating_system == win32 ? ".\\ConvertNII.exe" : "./ConvertNII")) {
             if (tokens.size() == 4) {
                 ui->checkConvertNII->setChecked(true);
                 ui->lineEditConvertNII_input_file->setText(tokens[1].c_str());
                 ui->lineEditConvertNII_mask_file->setText(tokens[2].c_str());
                 ui->lineEditConvertNII_mask_threshold->setText(tokens[3].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? "L_Moduarity.exe" : "./L_Moduarity")) {
+        } else if (tokens[0] == (operating_system == win32 ? ".\\L_Moduarity.exe" : "./L_Moduarity")) {
             if (tokens.size() == 3) {
                 ui->checkL_Modularity->setChecked(true);
                 ui->lineEditL_Modularity_dir_for_csr->setText(tokens[1].c_str());
@@ -311,5 +360,8 @@ void MainWindow::on_toolButtonL_Modularity_dir_for_csr_clicked()
 
 void MainWindow::on_toolButtonSaveDir_clicked()
 {
-    ui->lineEditSaveDir->setText(QFileDialog::getExistingDirectory(this, "Directory"));
+    ui->lineEditSaveDir->setText(QFileDialog::getOpenFileName(this,
+                                                              "Open script..." ,
+                                                              (operating_system == win32 ? "*.bat" : "*.sh"),
+                                                              (operating_system == win32 ? "script (*.bat);;Any (*.*)" : "script (*.sh);Any (*.*)")));
 }
