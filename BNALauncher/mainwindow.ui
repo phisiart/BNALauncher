@@ -65,9 +65,6 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="6">
-      <widget class="QLineEdit" name="lineEditCUCorMat_to_save_cormatrix"/>
-     </item>
      <item row="0" column="1" colspan="6">
       <widget class="QLabel" name="label">
        <property name="font">
@@ -137,9 +134,6 @@
      </item>
      <item row="8" column="6">
       <widget class="QLineEdit" name="lineEditCUBFW_Lp_input_dir"/>
-     </item>
-     <item row="3" column="6">
-      <widget class="QLineEdit" name="lineEditCUCorMat_to_average"/>
      </item>
      <item row="7" column="1" colspan="7">
       <widget class="QLabel" name="label_2">
@@ -365,9 +359,6 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="6">
-      <widget class="QLineEdit" name="lineEditCUCorMat_threshold_type"/>
-     </item>
      <item row="26" column="6">
       <widget class="QLineEdit" name="lineEditConvertNII_mask_threshold"/>
      </item>
@@ -419,7 +410,7 @@
      <item row="27" column="0">
       <widget class="QCheckBox" name="checkL_Modularity">
        <property name="text">
-        <string>L_Modularity</string>
+        <string>Louvain_Modularity</string>
        </property>
       </widget>
      </item>
@@ -513,6 +504,57 @@
      </item>
      <item row="30" column="6">
       <widget class="QLineEdit" name="lineEditSaveDir"/>
+     </item>
+     <item row="3" column="6">
+      <widget class="QComboBox" name="comboBoxCUCorMat_to_average">
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>y</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>n</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="4" column="6">
+      <widget class="QComboBox" name="comboBoxCUCorMat_to_save_cormatrix">
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>y</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>n</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="5" column="6">
+      <widget class="QComboBox" name="comboBoxCUCorMat_threshold_type">
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>r</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>s</string>
+        </property>
+       </item>
+      </widget>
      </item>
     </layout>
    </widget>

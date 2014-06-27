@@ -33,9 +33,9 @@ void MainWindow::on_pushButtonSave_clicked()
     if (ui->checkCUCorMat->isChecked()) {
         if (ui->lineEditCUCorMat_Dir_for_BOLD->text().isEmpty()
                 || ui->lineEditCUCorMat_threshold_for_mask->text().isEmpty()
-                || ui->lineEditCUCorMat_to_average->text().isEmpty()
-                || ui->lineEditCUCorMat_to_save_cormatrix->text().isEmpty()
-                || ui->lineEditCUCorMat_threshold_type->text().isEmpty()
+                //|| ui->lineEditCUCorMat_to_average->text().isEmpty()
+                //|| ui->lineEditCUCorMat_to_save_cormatrix->text().isEmpty()
+                //|| ui->lineEditCUCorMat_threshold_type->text().isEmpty()
                 || ui->lineEditCUCorMat_threshold_for_correlation_coefficient->text().isEmpty()) {
             QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
             return;
@@ -45,11 +45,14 @@ void MainWindow::on_pushButtonSave_clicked()
               ' ' <<
               ui->lineEditCUCorMat_threshold_for_mask->text().toStdString() <<
               ' ' <<
-              ui->lineEditCUCorMat_to_average->text().toStdString() <<
+              ui->comboBoxCUCorMat_to_average->currentText().toStdString() <<
+                  //ui->lineEditCUCorMat_to_average->text().toStdString() <<
               ' ' <<
-              ui->lineEditCUCorMat_to_save_cormatrix->text().toStdString() <<
+              ui->comboBoxCUCorMat_to_save_cormatrix->currentText().toStdString() <<
+                  //ui->lineEditCUCorMat_to_save_cormatrix->text().toStdString() <<
               ' ' << 
-              ui->lineEditCUCorMat_threshold_type->text().toStdString() <<
+              ui->comboBoxCUCorMat_threshold_type->currentText().toStdString() <<
+                  //ui->lineEditCUCorMat_threshold_type->text().toStdString() <<
               ' ' <<
               ui->lineEditCUCorMat_threshold_for_correlation_coefficient->text().toStdString() <<
               std::endl;
@@ -150,7 +153,7 @@ void MainWindow::on_pushButtonSave_clicked()
             QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
-        script << (operating_system == win32 ? ".\\L_Moduarity.exe " : "./L_Moduarity ") <<
+        script << (operating_system == win32 ? ".\\Louvain_Moduarity.exe " : "./Louvain_Moduarity ") <<
               ui->lineEditL_Modularity_dir_for_csr->text().toStdString() <<
               ' ' <<
               ui->lineEditL_Modularity_num_of_random_networks->text().toStdString() <<
@@ -238,9 +241,12 @@ void MainWindow::on_pushButtonLoad_clicked()
                 ui->checkCUCorMat->setChecked(true);
                 ui->lineEditCUCorMat_Dir_for_BOLD->setText(tokens[1].c_str());
                 ui->lineEditCUCorMat_threshold_for_mask->setText(tokens[2].c_str());
-                ui->lineEditCUCorMat_to_average->setText(tokens[3].c_str());
-                ui->lineEditCUCorMat_to_save_cormatrix->setText(tokens[4].c_str());
-                ui->lineEditCUCorMat_threshold_type->setText(tokens[5].c_str());
+                ui->comboBoxCUCorMat_to_average->setCurrentIndex(tokens[3] == "n");
+                ui->comboBoxCUCorMat_to_save_cormatrix->setCurrentIndex(tokens[4] == "n");
+                ui->comboBoxCUCorMat_threshold_type->setCurrentIndex(tokens[5] == "s");
+                //ui->lineEditCUCorMat_to_average->setText(tokens[3].c_str());
+                //ui->lineEditCUCorMat_to_save_cormatrix->setText(tokens[4].c_str());
+                //ui->lineEditCUCorMat_threshold_type->setText(tokens[5].c_str());
                 std::string token6;
                 for (size_t i = 6; i < tokens.size(); ++i)
                     token6 += tokens[i] + " ";
@@ -287,7 +293,7 @@ void MainWindow::on_pushButtonLoad_clicked()
                 ui->lineEditConvertNII_mask_file->setText(tokens[2].c_str());
                 ui->lineEditConvertNII_mask_threshold->setText(tokens[3].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? ".\\L_Moduarity.exe" : "./L_Moduarity")) {
+        } else if (tokens[0] == (operating_system == win32 ? ".\\Louvain_Moduarity.exe" : "./Louvain_Moduarity")) {
             if (tokens.size() == 3) {
                 ui->checkL_Modularity->setChecked(true);
                 ui->lineEditL_Modularity_dir_for_csr->setText(tokens[1].c_str());
