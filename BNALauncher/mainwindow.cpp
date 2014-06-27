@@ -153,7 +153,7 @@ void MainWindow::on_pushButtonSave_clicked()
             QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
-        script << (operating_system == win32 ? ".\\Louvain_Moduarity.exe " : "./Louvain_Moduarity ") <<
+        script << (operating_system == win32 ? ".\\Louvain_Modularity.exe " : "./Louvain_Modularity ") <<
               ui->lineEditL_Modularity_dir_for_csr->text().toStdString() <<
               ' ' <<
               ui->lineEditL_Modularity_num_of_random_networks->text().toStdString() <<
@@ -293,7 +293,7 @@ void MainWindow::on_pushButtonLoad_clicked()
                 ui->lineEditConvertNII_mask_file->setText(tokens[2].c_str());
                 ui->lineEditConvertNII_mask_threshold->setText(tokens[3].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? ".\\Louvain_Moduarity.exe" : "./Louvain_Moduarity")) {
+        } else if (tokens[0] == (operating_system == win32 ? ".\\Louvain_Modularity.exe" : "./Louvain_Modularity")) {
             if (tokens.size() == 3) {
                 ui->checkL_Modularity->setChecked(true);
                 ui->lineEditL_Modularity_dir_for_csr->setText(tokens[1].c_str());
