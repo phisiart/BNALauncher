@@ -23,7 +23,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButtonSave_clicked()
 {
-    if (operating_system != win32 && operating_system != linux) {
+    if (operating_system != os_win32 && operating_system != os_linux) {
         std::cout << "Not win32 or linux!" << std::endl;
 
     }
@@ -40,7 +40,7 @@ void MainWindow::on_pushButtonSave_clicked()
             QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
-        script << (operating_system == win32 ? ".\\CUCorMat.exe " : "./CUCormat ") <<
+        script << (operating_system == os_win32 ? ".\\CUCorMat.exe " : "./CUCormat ") <<
               ui->lineEditCUCorMat_Dir_for_BOLD->text().toStdString() <<
               ' ' <<
               ui->lineEditCUCorMat_threshold_for_mask->text().toStdString() <<
@@ -65,7 +65,7 @@ void MainWindow::on_pushButtonSave_clicked()
             QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
-        script << (operating_system == win32 ? ".\\CUBFW_Lp.exe " : "./CUBFW_Lp ") <<
+        script << (operating_system == os_win32 ? ".\\CUBFW_Lp.exe " : "./CUBFW_Lp ") <<
               ui->lineEditCUBFW_Lp_input_dir->text().toStdString() <<
               ' ' <<
               ui->lineEditCUBFW_Lp_num_of_random_networks->text().toStdString() <<
@@ -78,7 +78,7 @@ void MainWindow::on_pushButtonSave_clicked()
             QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
-        script << (operating_system == win32 ? ".\\CUBFS_Lp.exe " : "./CUBFS_Lp ") <<
+        script << (operating_system == os_win32 ? ".\\CUBFS_Lp.exe " : "./CUBFS_Lp ") <<
               ui->lineEditCUBFS_Lp_input_dir->text().toStdString() <<
               ' ' <<
               ui->lineEditCUBFS_Lp_num_of_random_networks->text().toStdString() <<
@@ -91,7 +91,7 @@ void MainWindow::on_pushButtonSave_clicked()
             QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
-        script << (operating_system == win32 ? ".\\BFS_MulCPU.exe " : "./BFS_MulCPU ") <<
+        script << (operating_system == os_win32 ? ".\\BFS_MulCPU.exe " : "./BFS_MulCPU ") <<
               ui->lineEditBFS_MulCPU_input_dir->text().toStdString() <<
               ' ' <<
               ui->lineEditBFS_MulCPU_num_of_random_networks->text().toStdString() <<
@@ -104,7 +104,7 @@ void MainWindow::on_pushButtonSave_clicked()
             QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
-        script << (operating_system == win32 ? ".\\Cp.exe " : "./Cp ") <<
+        script << (operating_system == os_win32 ? ".\\Cp.exe " : "./Cp ") <<
               ui->lineEditCp_input_dir->text().toStdString() <<
               ' ' <<
               ui->lineEditCp_num_of_random_networks->text().toStdString() <<
@@ -116,7 +116,7 @@ void MainWindow::on_pushButtonSave_clicked()
             QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
-        script << (operating_system == win32 ? ".\\Degree.exe " : "./Degree ") <<
+        script << (operating_system == os_win32 ? ".\\Degree.exe " : "./Degree ") <<
               ui->lineEditDegree_input_dir->text().toStdString() <<
               std::endl;
     }
@@ -126,7 +126,7 @@ void MainWindow::on_pushButtonSave_clicked()
             QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
-        script << (operating_system == win32 ? ".\\CUBC.exe " : "./CUBC ") <<
+        script << (operating_system == os_win32 ? ".\\CUBC.exe " : "./CUBC ") <<
               ui->lineEditCUBC_input_dir->text().toStdString() <<
               std::endl;
     }
@@ -138,7 +138,7 @@ void MainWindow::on_pushButtonSave_clicked()
             QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
-        script << (operating_system == win32 ? ".\\ConvertNII.exe " : "./ConvertNII ") <<
+        script << (operating_system == os_win32 ? ".\\ConvertNII.exe " : "./ConvertNII ") <<
               ui->lineEditConvertNII_input_file->text().toStdString() <<
               ' ' <<
               ui->lineEditConvertNII_mask_file->text().toStdString() <<
@@ -153,7 +153,7 @@ void MainWindow::on_pushButtonSave_clicked()
             QMessageBox::information(this, "Error", "Empty parameter(s).", QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
-        script << (operating_system == win32 ? ".\\Louvain_Modularity.exe " : "./Louvain_Modularity ") <<
+        script << (operating_system == os_win32 ? ".\\Louvain_Modularity.exe " : "./Louvain_Modularity ") <<
               ui->lineEditL_Modularity_dir_for_csr->text().toStdString() <<
               ' ' <<
               ui->lineEditL_Modularity_num_of_random_networks->text().toStdString() <<
@@ -166,8 +166,8 @@ void MainWindow::on_pushButtonSave_clicked()
     if (!file_info.exists()) {
         file_name = QFileDialog::getSaveFileName(this,
                                                          "Save as..." ,
-                                                         (operating_system == win32 ? "script.bat" : "script.sh"),
-                                                         (operating_system == win32 ? "script (*.bat);;Any (*.*)" : "script (*.sh);Any (*.*)"));
+                                                         (operating_system == os_win32 ? "script.bat" : "script.sh"),
+                                                         (operating_system == os_win32 ? "script (*.bat);;Any (*.*)" : "script (*.sh);Any (*.*)"));
 
     }
     if (!file_name.isNull()) {
@@ -177,11 +177,11 @@ void MainWindow::on_pushButtonSave_clicked()
         os << script.str();
         os.close();
 
-        if (operating_system == win32) {
+        if (operating_system == os_win32) {
             std::string cmd = "start " + file_name.toStdString() + " &";
             system(cmd.c_str());
         } else {
-            std::string cmd = "source " + file_name.toStdString()() + " &";
+            std::string cmd = "sh " + file_name.toStdString()() + " &";
             system(cmd.c_str());
         }
     }
@@ -207,8 +207,8 @@ void MainWindow::on_pushButtonLoad_clicked()
     if (!file_info.exists()) {
         file_name = QFileDialog::getOpenFileName(this,
                                                  "Save as..." ,
-                                                 (operating_system == win32 ? "script.bat" : "script.sh"),
-                                                 (operating_system == win32 ? "script (*.bat);;Any (*.*)" : "script (*.sh);Any (*.*)"));
+                                                 (operating_system == os_win32 ? "script.bat" : "script.sh"),
+                                                 (operating_system == os_win32 ? "script (*.bat);;Any (*.*)" : "script (*.sh);Any (*.*)"));
         ui->lineEditSaveDir->setText(file_name);
     }
     std::ifstream is;
@@ -244,7 +244,7 @@ void MainWindow::on_pushButtonLoad_clicked()
             continue;
 
 
-        if (tokens[0] == (operating_system == win32 ? ".\\CUCorMat.exe" : "./CUCormat")) {
+        if (tokens[0] == (operating_system == os_win32 ? ".\\CUCorMat.exe" : "./CUCormat")) {
             if (tokens.size() >= 7) {
                 ui->checkCUCorMat->setChecked(true);
                 ui->lineEditCUCorMat_Dir_for_BOLD->setText(tokens[1].c_str());
@@ -260,48 +260,48 @@ void MainWindow::on_pushButtonLoad_clicked()
                     token6 += tokens[i] + " ";
                 ui->lineEditCUCorMat_threshold_for_correlation_coefficient->setText(token6.c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? ".\\CUBFW_Lp.exe" : "./CUBFW_Lp")) {
+        } else if (tokens[0] == (operating_system == os_win32 ? ".\\CUBFW_Lp.exe" : "./CUBFW_Lp")) {
             if (tokens.size() == 3) {
                 ui->checkCUBFW_Lp->setChecked(true);
                 ui->lineEditCUBFW_Lp_input_dir->setText(tokens[1].c_str());
                 ui->lineEditCUBFW_Lp_num_of_random_networks->setText(tokens[2].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? ".\\CUBFS_Lp.exe" : "./CUBFS_Lp")) {
+        } else if (tokens[0] == (operating_system == os_win32 ? ".\\CUBFS_Lp.exe" : "./CUBFS_Lp")) {
             if (tokens.size() == 3) {
                 ui->checkCUBFS_Lp->setChecked(true);
                 ui->lineEditCUBFS_Lp_input_dir->setText(tokens[1].c_str());
                 ui->lineEditCUBFS_Lp_num_of_random_networks->setText(tokens[2].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? ".\\BFS_MulCPU.exe" : "./BFS_MulCPU")) {
+        } else if (tokens[0] == (operating_system == os_win32 ? ".\\BFS_MulCPU.exe" : "./BFS_MulCPU")) {
             if (tokens.size() == 3) {
                 ui->checkBFS_MulCPU->setChecked(true);
                 ui->lineEditBFS_MulCPU_input_dir->setText(tokens[1].c_str());
                 ui->lineEditBFS_MulCPU_num_of_random_networks->setText(tokens[2].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? ".\\Cp.exe" : "./Cp")) {
+        } else if (tokens[0] == (operating_system == os_win32 ? ".\\Cp.exe" : "./Cp")) {
             if (tokens.size() == 3) {
                 ui->checkCP->setChecked(true);
                 ui->lineEditCp_input_dir->setText(tokens[1].c_str());
                 ui->lineEditCp_num_of_random_networks->setText(tokens[2].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? ".\\Degree.exe" : "./Degree")) {
+        } else if (tokens[0] == (operating_system == os_win32 ? ".\\Degree.exe" : "./Degree")) {
             if (tokens.size() == 2) {
                 ui->checkDegree->setChecked(true);
                 ui->lineEditDegree_input_dir->setText(tokens[1].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? ".\\CUBC.exe" : "./CUBC")) {
+        } else if (tokens[0] == (operating_system == os_win32 ? ".\\CUBC.exe" : "./CUBC")) {
             if (tokens.size() == 2) {
                 ui->checkCUBC->setChecked(true);
                 ui->lineEditCUBC_input_dir->setText(tokens[1].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? ".\\ConvertNII.exe" : "./ConvertNII")) {
+        } else if (tokens[0] == (operating_system == os_win32 ? ".\\ConvertNII.exe" : "./ConvertNII")) {
             if (tokens.size() == 4) {
                 ui->checkConvertNII->setChecked(true);
                 ui->lineEditConvertNII_input_file->setText(tokens[1].c_str());
                 ui->lineEditConvertNII_mask_file->setText(tokens[2].c_str());
                 ui->lineEditConvertNII_mask_threshold->setText(tokens[3].c_str());
             }
-        } else if (tokens[0] == (operating_system == win32 ? ".\\Louvain_Modularity.exe" : "./Louvain_Modularity")) {
+        } else if (tokens[0] == (operating_system == os_win32 ? ".\\Louvain_Modularity.exe" : "./Louvain_Modularity")) {
             if (tokens.size() == 3) {
                 ui->checkL_Modularity->setChecked(true);
                 ui->lineEditL_Modularity_dir_for_csr->setText(tokens[1].c_str());
@@ -376,6 +376,6 @@ void MainWindow::on_toolButtonSaveDir_clicked()
 {
     ui->lineEditSaveDir->setText(QFileDialog::getOpenFileName(this,
                                                               "Open script..." ,
-                                                              (operating_system == win32 ? "*.bat" : "*.sh"),
-                                                              (operating_system == win32 ? "script (*.bat);;Any (*.*)" : "script (*.sh);Any (*.*)")));
+                                                              (operating_system == os_win32 ? "*.bat" : "*.sh"),
+                                                              (operating_system == os_win32 ? "script (*.bat);;Any (*.*)" : "script (*.sh);Any (*.*)")));
 }

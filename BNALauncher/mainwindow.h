@@ -6,8 +6,8 @@
 #include <QCheckBox>
 
 extern enum OperatingSystem {
-    win32,
-    linux
+    os_win32,
+    os_linux
 } operating_system;
 
 namespace Ui {
