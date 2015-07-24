@@ -6,7 +6,7 @@ OperatingSystem operating_system;
 int main(int argc, char *argv[])
 {
 #ifdef Q_OS_WIN32
-    operating_system = win32;
+    operating_system = os_win32;
 #endif
 #ifdef Q_OS_LINUX
     operating_system = linux;

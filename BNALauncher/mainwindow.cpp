@@ -181,7 +181,7 @@ void MainWindow::on_pushButtonSave_clicked()
             std::string cmd = "start " + file_name.toStdString() + " &";
             system(cmd.c_str());
         } else {
-            std::string cmd = "sh " + file_name.toStdString()() + " &";
+            std::string cmd = "sh " + file_name.toStdString() + " &";
             system(cmd.c_str());
         }
     }
