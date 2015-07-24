@@ -176,6 +176,14 @@ void MainWindow::on_pushButtonSave_clicked()
         os.open(file_name.toStdString().c_str());
         os << script.str();
         os.close();
+
+        if (operating_system == win32) {
+            std::string cmd = "start " + file_name.toStdString() + " &";
+            system(cmd.c_str());
+        } else {
+            std::string cmd = "source " + file_name.toStdString()() + " &";
+            system(cmd.c_str());
+        }
     }
     /*if (ui->lineEditSaveDir->text().isEmpty()) {
         on_toolButtonSaveDir_clicked();
